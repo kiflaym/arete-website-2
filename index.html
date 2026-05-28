@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARETE Switzerland — Elevating Potential & The Program</title>
+    
+    <!-- Premium Editorial Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           1. DESIGN TOKENS & CORE RESET
+           ========================================= */
+        :root {
+            --bg-color: #050505;
+            --text-color-primary: #f8f9fa;
+            --text-color-muted: #7e7e86;
+            --accent-color: #ff5a00; /* Premium Vibrant Orange */
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-sans: 'Inter', sans-serif;
+            --container-padding: clamp(2rem, 8vw, 10rem);
+            --header-height: 90px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--bg-color);
+            color: var(--text-color-primary);
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        /* =========================================
+           2. NAVIGATION HEADER & LANG SWITCH
+           ========================================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            padding: 0 var(--container-padding);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background-color: rgba(5, 5, 5, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .brand-logo-container img {
+            height: clamp(1.25rem, 2vw, 1.75rem);
+            width: auto;
+            display: block;
+        }
+
+        .header-actions-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-item a {
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-color-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-item a:hover {
+            color: var(--text-color-primary);
+        }
+
+        /* Language Selector Utilities */
+        .lang-switch {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-color-muted);
+            cursor: pointer;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 2px 0;
+        }
+
+        .lang-btn:hover, .lang-btn.active {
+            color: var(--text-color-primary);
+        }
+
+        .lang-btn.active {
+            font-weight: 700;
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .lang-divider {
+            color: rgba(255, 255, 255, 0.15);
+            user-select: none;
+        }
+
+        @media (max-width: 992px) {
+            header { padding: 0 2rem; }
+            .nav-menu { display: none; }
+        }
+
+        /* Language Content Visibility Rules */
+        html[lang="en"] .lang-de { display: none !important; }
+        html[lang="de"] .lang-en { display: none !important; }
+
+        /* =========================================
+           3. SEAMLESS FLOW LAYOUT UTILITIES
+           ========================================= */
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: var(--header-height);
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10vh var(--container-padding);
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            min-height: calc(100vh - var(--header-height));
+        }
+
+        /* =========================================
+           4. TYPOGRAPHY & EDITORIAL ELEMENTS
+           ========================================= */
+        .huge-title {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(3rem, 11vw, 9.5rem);
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        .subtitle-tracker {
+            font-family: var(--font-display);
+            font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-color-muted);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .subtitle-tracker::before {
+            content: '';
+            display: inline-block;
+            width: 40px;
+            height: 1px;
+            background-color: var(--text-color-muted);
+        }
+
+        .editorial-paragraph {
+            font-size: clamp(1.25rem, 3.5vw, 2.2rem);
+            line-height: 1.5;
+            font-weight: 300;
+            max-width: 1200px;
+            color: var(--text-color-primary);
+        }
+
+        .editorial-paragraph strong { font-weight: 500; color: #fff; }
+        .dimmed-text { color: var(--text-color-muted); }
+
+        .highlight-box {
+            border-left: 2px solid var(--text-color-primary);
+            padding-left: clamp(1.5rem, 4vw, 4rem);
+            margin-top: 2rem;
+        }
+
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+        }
+
+        @media (min-width: 992px) {
+            .split-layout { grid-template-columns: 1fr 1fr; align-items: start; }
+        }
+
+        .flow-cta {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 3rem;
+            font-family: var(--font-display);
+            font-size: clamp(1.1rem, 2vw, 1.5rem);
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-color-primary);
+            border-bottom: 2px solid var(--text-color-primary);
+            padding-bottom: 0.5rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            align-self: flex-start;
+        }
+
+        .flow-cta:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateX(10px);
+        }
+
+        /* Hero Layout Setup */
+        .hero-section {
+            background: radial-gradient(circle at 80% 20%, rgba(255, 90, 0, 0.04) 0%, transparent 50%);
+            justify-content: flex-end;
+            padding-bottom: 15vh;
+        }
+
+        .metric-hero-block {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            align-items: end;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .metric-hero-block { grid-template-columns: auto 1fr; gap: 6rem; }
+        }
+
+        .giant-metric {
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: clamp(5rem, 16vw, 14rem);
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+            color: var(--accent-color);
+        }
+
+        .metric-label {
+            font-size: clamp(1.25rem, 2.5vw, 2rem);
+            line-height: 1.4;
+            color: var(--text-color-primary);
+            font-weight: 300;
+            max-width: 700px;
+            padding-bottom: 1rem;
+        }
+
+        /* =========================================
+           5. ELEGANT CAPSULE FRAMES 
+           ========================================= */
+        .pillars-section { 
+            min-height: auto; 
+            padding-top: 8vh; 
+            padding-bottom: 8vh; 
+        }
+
+        .capsule-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .elegant-capsule {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 3rem; 
+            padding: 2rem 3rem;
+            background: transparent;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .elegant-capsule {
+                flex-direction: row;
+                align-items: center;
+                border-radius: 100px; 
+                padding: 2.5rem 5rem;
+                gap: 4rem;
+            }
+            .elegant-capsule.vertical {
+                flex-direction: column;
+                align-items: flex-start;
+                border-radius: 2.5rem;
+                padding: 3.5rem;
+                gap: 1.5rem;
+            }
+        }
+
+        .elegant-capsule:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.02);
+            transform: scale(1.01);
+        }
+
+        .capsule-number {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 2vw, 2rem);
+            color: var(--accent-color);
+            font-weight: 700;
+            min-width: 60px;
+            margin-bottom: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .capsule-number { margin-bottom: 0; }
+        }
+
+        .capsule-content {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        @media (min-width: 1024px) {
+            .capsule-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 3rem;
+            }
+        }
+
+        .capsule-content h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 1024px) {
+            .capsule-content h3 { margin-bottom: 0; }
+        }
+
+        .capsule-content p {
+            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+            color: var(--text-color-muted);
+            line-height: 1.5;
+            font-weight: 300;
+            max-width: 600px;
+        }
+
+        /* =========================================
+           6. PATHWAY TIMELINE
+           ========================================= */
+        .pathway-section { min-height: auto; justify-content: flex-start; }
+        .pathway-timeline { display: flex; flex-direction: column; width: 100%; }
+
+        .timeline-step {
+            display: grid;
+            grid-template-columns: 1fr;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 0;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .timeline-step { grid-template-columns: 150px 1fr; gap: 4rem; padding: 4rem 0; }
+        }
+
+        .step-number-col { display: flex; align-items: flex-start; }
+
+        .step-digit {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.15);
+            transition: color 0.3s ease;
+        }
+
+        .timeline-step:hover .step-digit { color: var(--text-color-primary); }
+
+        .step-content-col h3 {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .step-content-col p {
+            color: var(--text-color-muted);
+            font-size: clamp(1.1rem, 1.5vw, 1.35rem);
+            line-height: 1.5;
+            max-width: 900px;
+        }
+
+        /* =========================================
+           7. TEAM & BOARD GRID
+           ========================================= */
+        .board-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .board-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        }
+
+        .board-member {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease;
+        }
+        
+        .board-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .board-img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .board-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .board-desc {
+            color: var(--text-color-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* High-Impact Contact Links */
+        .contact-link {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#home" class="brand-logo-container">
+            <img src="https://www.image2url.com/r2/default/images/1779958814590-e73088d5-6eb2-4f8d-8566-edcc489e95e6.png" alt="Arete Logo" />
+        </a>
+        <div class="header-actions-wrapper">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home">
+                        <span class="lang-en">Home</span><span class="lang-de">Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#program">
+                        <span class="lang-en">The Program</span><span class="lang-de">Das Programm</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#youngsters">
+                        <span class="lang-en">Youngsters</span><span class="lang-de">Youngsters</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#partners">
+                        <span class="lang-en">Partners</span><span class="lang-de">Partner</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#team">
+                        <span class="lang-en">Team</span><span class="lang-de">Team</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact">
+                        <span class="lang-en">Contact</span><span class="lang-de">Kontakt</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <!-- Elegant Interface Switcher -->
+            <div class="lang-switch">
+                <button onclick="setLang('en')" class="lang-btn" id="btn-en">EN</button>
+                <span class="lang-divider">|</span>
+                <button onclick="setLang('de')" class="lang-btn" id="btn-de">DE</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="flow-container">
+
+        <!-- 1. The Hook -->
+        <section id="home" class="hero-section">
+            <h1 class="huge-title">
+                <span class="lang-en">Elevating<br>Potential</span>
+                <span class="lang-de">Potential<br>entfalten</span>
+            </h1>
+            <h1 class="huge-title dimmed-text">
+                <span class="lang-en">Forging<br>Futures</span>
+                <span class="lang-de">Zukunft<br>gestalten</span>
+            </h1>
+        </section>
+
+        <!-- 2. The Foundation -->
+        <section style="background: #09090b;">
+            <div class="split-layout">
+                <div>
+                    <span class="subtitle-tracker">
+                        <span class="lang-en">The Meaning of Excellence</span>
+                        <span class="lang-de">Die Bedeutung von Exzellenz</span>
+                    </span>
+                    <h2 class="huge-title" style="font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 2rem;">ARETE</h2>
+                </div>
+                <div class="highlight-box">
+                    <p class="editorial-paragraph">
+                        <span class="lang-en">"Arete comes from ancient Greek, meaning excellence through the full realization of one’s potential. It is the pursuit of a life well-lived where purpose, mastery, and fulfillment meet."</span>
+                        <span class="lang-de">„Arete kommt aus dem Altgriechischen und bedeutet Exzellenz durch die volle Entfaltung des eigenen Potentials. Es ist das Streben nach einem erfüllten Leben, in dem Sinnhaftigkeit, Meisterschaft und Verwirklichung aufeinandertreffen.“</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. The Friction -->
+        <section>
+            <span class="subtitle-tracker">
+                <span class="lang-en">The Real Dilemma</span>
+                <span class="lang-de">Das reale Dilemma</span>
+            </span>
+            <div class="editorial-paragraph">
+                <span class="lang-en">
+                    Many talented young people from <span style="color: #fff; font-weight: 400;">low-opportunity backgrounds</span>—such as those with a migration background—face a dilemma at a young age. 
+                    <br><br>
+                    They lack professional networks <span class="dimmed-text">("Vitamin B")</span> and feel isolated in their ambitions.
+                </span>
+                <span class="lang-de">
+                    Viele talentierte junge Menschen aus <span style="color: #fff; font-weight: 400;">weniger privilegierten Verhältnissen</span> – wie beispielsweise Personen mit Migrationshintergrund – stehen schon in jungen Jahren vor einem Dilemma.
+                    <br><br>
+                    Es fehlt ihnen an beruflichen Netzwerken <span class="dimmed-text">(„Vitamin B“)</span> und sie fühlen sich in ihren Ambitionen isoliert.
+                </span>
+            </div>
+        </section>
+
+        <!-- 4. The Vision -->
+        <section style="background: #020203; justify-content: center;">
+            <span class="subtitle-tracker">
+                <span class="lang-en">Our Vision</span>
+                <span class="lang-de">Unsere Vision</span>
+            </span>
+            <div class="editorial-paragraph" style="max-width: 1400px;">
+                <span class="lang-en">We envision a Switzerland where every motivated young talent, regardless of origin, can contribute fully to society and build a life of purpose.</span>
+                <span class="lang-de">Wir visionieren eine Schweiz, in der jedes motivierte junge Talent, unabhängig von der Herkunft, vollwertig zur Gesellschaft beitragen und ein selbstbestimmtes Leben aufbauen kann.</span>
+            </div>
+            
+            <div class="editorial-paragraph highlight-box" style="margin-top: 4rem; border-color: var(--accent-color);">
+                <strong class="lang-en">At Arete, we aim to change that.</strong>
+                <strong class="lang-de">Wir von Arete wollen das ändern.</strong>
+            </div>
+        </section>
+
+        <!-- =========================================
+             THE PROGRAM
+             ========================================= -->
+        <section id="program" style="background: radial-gradient(circle at 10% 80%, rgba(255, 255, 255, 0.02) 0%, transparent 40%); justify-content: space-between;">
+            <div>
+                <span class="subtitle-tracker">
+                    <span class="lang-en">Our Methodology</span>
+                    <span class="lang-de">Unsere Methodik</span>
+                </span>
+                <h2 class="huge-title">
+                    <span class="lang-en">The<br>Program</span>
+                    <span class="lang-de">Das<br>Programm</span>
+                </h2>
+            </div>
+            
+            <div class="metric-hero-block">
+                <div class="giant-metric">5—15</div>
+                <div class="metric-label">
+                    <span class="lang-en">Years of consistent partnership through life’s most critical transitions. From school straight to a defining career.</span>
+                    <span class="lang-de">Jahre beständige Partnerschaft durch die kritischsten Übergänge des Lebens. Von der Schule direkt in eine prägende Karriere.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="pillars-section" style="background: #09090b;">
+            <div class="capsule-container">
+                <div class="elegant-capsule">
+                    <div class="capsule-number">01</div>
+                    <div class="capsule-content">
+                        <h3>
+                            <span class="lang-en">Continuity</span><span class="lang-de">Kontinuität</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Stable support through school to career.</span>
+                            <span class="lang-de">Stabile Unterstützung von der Schule bis zum Beruf.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="elegant-capsule">
+                    <div class="capsule-number">02</div>
+                    <div class="capsule-content">
+                        <h3>
+                            <span class="lang-en">Mindset</span><span class="lang-de">Mindset</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Building self-efficacy & breaking limits.</span>
+                            <span class="lang-de">Selbstwirksamkeit stärken & Grenzen überwinden.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="elegant-capsule">
+                    <div class="capsule-number">03</div>
+                    <div class="capsule-content">
+                        <h3>
+                            <span class="lang-en">Practical Support</span><span class="lang-de">Praktische Hilfe</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Removing real-world financial & skill barriers.</span>
+                            <span class="lang-de">Reale finanzielle und kompetenzbezogene Hürden abbauen.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="elegant-capsule">
+                    <div class="capsule-number">04</div>
+                    <div class="capsule-content">
+                        <h3>
+                            <span class="lang-en">Lived Experience</span><span class="lang-de">Gelebte Erfahrung</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Guidance from leaders who know the system.</span>
+                            <span class="lang-de">Begleitung durch Führungskräfte, die das System kennen.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pathway-section">
+            <span class="subtitle-tracker">
+                <span class="lang-en">The Journey</span><span class="lang-de">Die Reise</span>
+            </span>
+            <h2 class="section-title">
+                <span class="lang-en">The Arete Pathway</span><span class="lang-de">Der Arete-Weg</span>
+            </h2>
+            
+            <div class="pathway-timeline">
+                <div class="timeline-step">
+                    <div class="step-number-col"><span class="step-digit">01</span></div>
+                    <div class="step-content-col">
+                        <h3>
+                            <span class="lang-en">Assessment & Discovery</span><span class="lang-de">Analyse & Entdeckung</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Intensive 1:1 strategic coaching sessions designed to pinpoint unique individual strengths, surface latent talents, and chart a concrete, actionable career trajectory.</span>
+                            <span class="lang-de">Intensive strategische 1:1-Coachings, um individuelle Stärken präzise zu bestimmen, verborgene Talente zu entfalten und einen konkreten, umsetzbaren Karriereweg aufzuzeigen.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number-col"><span class="step-digit">02</span></div>
+                    <div class="step-content-col">
+                        <h3>
+                            <span class="lang-en">Skill-Building</span><span class="lang-de">Kompetenzaufbau</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">High-impact interactive workshops and deep-dive industry insights engineered to rapidly bridge the traditional gap between academic theory and elite marketplace execution.</span>
+                            <span class="lang-de">Wirkungsvolle, interaktive Workshops und fundierte Einblicke in Branchen, um die Kluft zwischen akademischer Theorie und erstklassiger Praxisumsetzung rasch zu schliessen.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number-col"><span class="step-digit">03</span></div>
+                    <div class="step-content-col">
+                        <h3>
+                            <span class="lang-en">The Expert Pool</span><span class="lang-de">Der Experten-Pool</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Direct, uncompromised access to exclusive professional networks ("Vitamin B"), high-value mentorship links, and elite internship placements normally closed to outsiders.</span>
+                            <span class="lang-de">Direkter, uneingeschränkter Zugang zu exklusiven beruflichen Netzwerken („Vitamin B“), hochkarätigen Mentoring-Verbindungen und erstklassigen Praktikumsplätzen, die Aussenstehenden meist verschlossen bleiben.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number-col"><span class="step-digit">04</span></div>
+                    <div class="step-content-col">
+                        <h3>
+                            <span class="lang-en">Social Resilience</span><span class="lang-de">Soziale Resilienz</span>
+                        </h3>
+                        <p>
+                            <span class="lang-en">Achieving a fully realized, purpose-driven professional life, stepping into societal leadership, and actively serving as a visible role model for the incoming generation.</span>
+                            <span class="lang-de">Erreichen eines erfüllten, sinnstiftenden Berufslebens, Übernahme gesellschaftlicher Verantwortung und aktive Vorbildfunktion für die nachfolgende Generation.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+             THE YOUNGSTERS
+             ========================================= -->
+        <section id="youngsters" style="background: #09090b;">
+            <span class="subtitle-tracker">
+                <span class="lang-en">The Heart of Arete</span><span class="lang-de">Das Herz von Arete</span>
+            </span>
+            <h2 class="section-title">
+                <span class="lang-en">The Youngsters</span><span class="lang-de">Die Youngsters</span>
+            </h2>
+            <p class="editorial-paragraph">
+                <span class="lang-en">We support motivated young adults who are ready to grow beyond their current situations and build a life of purpose through long-term commitment and excellence.</span>
+                <span class="lang-de">Wir unterstützen motivierte junge Erwachsene, die bereit sind, über ihre aktuelle Situation hinauszuwachsen und durch langfristiges Engagement und Exzellenz ein erfülltes Leben aufzubauen.</span>
+            </p>
+            
+            <div class="highlight-box" style="margin-top: 4rem; border-color: rgba(255,255,255,0.2);">
+                <p class="editorial-paragraph dimmed-text" style="font-style: italic; font-size: 1.5rem;">
+                    <span class="lang-en">"We will soon publish our participants here."</span>
+                    <span class="lang-de">„Wir werden hier bald unsere Teilnehmenden vorstellen.“</span>
+                </p>
+                <span class="subtitle-tracker" style="margin-top: 2rem; color: var(--accent-color);">
+                    <span class="lang-en">Profiles in Development</span><span class="lang-de">Profile in Entwicklung</span>
+                </span>
+            </div>
+        </section>
+
+        <!-- =========================================
+             PARTNERS
+             ========================================= -->
+        <section id="partners">
+            <span class="subtitle-tracker">
+                <span class="lang-en">Investing in Social Resilience</span><span class="lang-de">In soziale Resilienz investieren</span>
+            </span>
+            <h2 class="section-title">
+                <span class="lang-en">Partners</span><span class="lang-de">Partner</span>
+            </h2>
+            <p class="editorial-paragraph" style="max-width: 1000px; margin-bottom: 5rem;">
+                <span class="lang-en">We offer transparent, impact-focused partnerships with clear metrics and professional reporting, ensuring your contribution delivers long-term returns for Swiss society.</span>
+                <span class="lang-de">Wir bieten transparente, wirkungsorientierte Partnerships mit klaren Kennzahlen und professioneller Berichterstattung, damit Ihr Beitrag einen langfristigen Nutzen für die Schweizer Gesellschaft stiftet.</span>
+            </p>
+            
+            <div class="split-layout">
+                <div class="elegant-capsule vertical">
+                    <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text-color-primary); margin-bottom: 0;">
+                        <span class="lang-en">Foundations & Institutions</span><span class="lang-de">Stiftungen & Institutionen</span>
+                    </h3>
+                    <p style="color: var(--text-color-muted); font-size: 1.15rem; line-height: 1.6; margin: 0;">
+                        <span class="lang-en">Invest in a program with measurable social returns. Your support helps us provide the sustained, personalized attention that turns ambition into achievement.</span>
+                        <span class="lang-de">Investieren Sie in ein Programm mit messbarem sozialem Nutzen. Ihre Unterstützung hilft uns, die nachhaltige, persönliche Begleitung zu bieten, die Ehrgeiz in Erfolg verwandelt.</span>
+                    </p>
+                </div>
+                
+                <div class="elegant-capsule vertical">
+                    <h3 style="font-family: var(--font-display); font-size: 1.8rem; color: var(--text-color-primary); margin-bottom: 0;">
+                        <span class="lang-en">Companies & HR Leaders</span><span class="lang-de">Unternehmen & HR-Führungskräfte</span>
+                    </h3>
+                    <p style="color: var(--text-color-muted); font-size: 1.15rem; line-height: 1.6; margin: 0;">
+                        <span class="lang-en">Meet your future workforce needs by building direct pipelines to highly motivated, rigorously prepared young talents ready to excel in the professional marketplace.</span>
+                        <span class="lang-de">Decken Sie Ihren zukünftigen Fachkräftebedarf durch direkte Zugänge zu hochmotivierten, gründlich vorbereiteten jungen Talenten, die bereit sind, auf dem Arbeitsmarkt Spitzenleistungen zu erbringen.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+             THE TEAM
+             ========================================= -->
+        <section id="team" style="background: #09090b;">
+            <span class="subtitle-tracker">
+                <span class="lang-en">Leadership with Vision</span><span class="lang-de">Führung mit Vision</span>
+            </span>
+            <h2 class="section-title">
+                <span class="lang-en">Our Team</span><span class="lang-de">Unser Team</span>
+            </h2>
+            
+            <!-- Founder Profile -->
+            <div class="split-layout" style="margin-bottom: 8rem; align-items: center;">
+                <div style="width: 100%; border-radius: 2rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                    <img src="https://www.image2url.com/r2/default/images/1779961286895-a7952894-445e-473d-80c8-71536d6ae5f6.jpg" alt="Kiflay Mengestabe" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: 55% center; display: block;">
+                </div>
+                <div>
+                    <span class="subtitle-tracker" style="color: var(--accent-color); margin-bottom: 1rem;">
+                        <span class="lang-en">Founder & Managing Director</span><span class="lang-de">Gründer & Geschäftsführer</span>
+                    </span>
+                    <h3 style="font-family: var(--font-display); font-size: clamp(2.5rem, 4vw, 4rem); font-weight: 700; margin-bottom: 2rem; line-height: 1.1;">Kiflay<br>Mengestabe</h3>
+                    <p class="editorial-paragraph" style="font-size: clamp(1.15rem, 2vw, 1.35rem); line-height: 1.6;">
+                        <span class="lang-en">Arete is built on the blueprint of Kiflay’s personal journey. From arriving in Switzerland as a refugee at age 13 to earning an EPFL Executive MBA, he understands the transformative power of the right support at the right time.</span>
+                        <span class="lang-de">Arete basiert auf dem Fundament von Kiflays persönlichem Lebensweg. Da er im Alter von 13 Jahren als Flüchtling in die Schweiz kam und später einen Executive MBA der EPFL absolvierte, weiss er um die transformative Kraft der richtigen Unterstützung zur richtigen Zeit.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Board of Members -->
+            <span class="subtitle-tracker">
+                <span class="lang-en">Strategic Oversight</span><span class="lang-de">Strategische Aufsicht</span>
+            </span>
+            <h3 class="section-title" style="font-size: clamp(2rem, 3vw, 2.5rem); margin-bottom: 2rem;">
+                <span class="lang-en">Board of Members</span><span class="lang-de">Vorstandsmitglieder</span>
+            </h3>
+            
+            <div class="board-grid">
+                <div class="board-member">
+                    <img src="https://www.image2url.com/r2/default/images/1779961571423-d2e98f64-5b84-46d6-b5b9-9fbdbb5f18d3.jpeg" alt="Stefanie Werder" class="board-img">
+                    <h4 class="board-name">Stefanie Werder</h4>
+                    <p class="board-desc">
+                        <span class="lang-en">Strategic oversight and humanitarian expertise, ensuring our mission remains focused and impactful.</span>
+                        <span class="lang-de">Strategische Aufsicht und humanitäre Expertise, um sicherzustellen, dass unsere Mission fokussiert und wirkungsvoll bleibt.</span>
+                    </p>
+                </div>
+                
+                <div class="board-member">
+                    <img src="https://www.image2url.com/r2/default/images/1779961618722-99991593-9791-45d6-b5b8-bb2bab26a47e.jpg" alt="Mirja Jenni" class="board-img">
+                    <h4 class="board-name">Mirja Jenni</h4>
+                    <p class="board-desc">
+                        <span class="lang-en">A specialist in vocational education and a role model for aspiring young talents across the region.</span>
+                        <span class="lang-de">Spezialistin für Berufsbildung und Vorbild für strebsame junge Talente in der gesamten Region.</span>
+                    </p>
+                </div>
+                
+                <div class="board-member">
+                    <img src="https://www.image2url.com/r2/default/images/1779961666896-1ecd48e9-e37b-4a26-bf1d-51aab4bc2a76.jpeg" alt="Jan Heller" class="board-img">
+                    <h4 class="board-name">Jan Heller</h4>
+                    <p class="board-desc">
+                        <span class="lang-en">Legal, governance, and compliance expert, providing the solid foundation for our sustainable growth.</span>
+                        <span class="lang-de">Experte für Recht, Governance und Compliance, der das solide Fundament für unser nachhaltiges Wachstum sichert.</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+             CONTACT
+             ========================================= -->
+        <section id="contact" style="background: radial-gradient(circle at 50% 100%, rgba(255, 90, 0, 0.05) 0%, transparent 60%); padding-bottom: 15vh;">
+            <span class="subtitle-tracker">
+                <span class="lang-en">Get in Touch</span><span class="lang-de">Kontakt aufnehmen</span>
+            </span>
+            <h2 class="huge-title" style="margin-bottom: 4rem;">
+                <span class="lang-en">Join The<br>Mission</span><span class="lang-de">Werden Sie Teil<br>der Mission</span>
+            </h2>
+            
+            <div class="split-layout">
+                <!-- Direct Inquiries -->
+                <div>
+                    <h3 style="font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; color: var(--accent-color); margin-bottom: 1.5rem;">
+                        <span class="lang-en">Direct Inquiries</span><span class="lang-de">Direkte Anfragen</span>
+                    </h3>
+                    <p style="font-size: 1.25rem; color: var(--text-color-muted); line-height: 1.5; margin-bottom: 3rem; max-width: 500px;">
+                        <span class="lang-en">For foundations, partner institutions, or media inquiries, please reach out directly to our Managing Director.</span>
+                        <span class="lang-de">Für Stiftungen, Partnerinstitutionen oder Medienanfragen wenden Sie sich bitte direkt an unseren Geschäftsführer.</span>
+                    </p>
+                    
+                    <a href="mailto:kiflaym@gmail.com" class="contact-link" style="text-transform: lowercase;">kiflaym@gmail.com</a>
+                    <a href="tel:+41798721062" class="contact-link">+41 79 872 10 62</a>
+                </div>
+                
+                <!-- Collaborate & Apply -->
+                <div style="background: rgba(255,255,255,0.02); padding: clamp(2rem, 4vw, 4rem); border-radius: 2.5rem; border: 1px solid rgba(255,255,255,0.08);">
+                    <h3 style="font-family: var(--font-display); font-size: 1.5rem; text-transform: uppercase; color: var(--accent-color); margin-bottom: 1.5rem;">
+                        <span class="lang-en">Collaborate</span><span class="lang-de">Kooperationen</span>
+                    </h3>
+                    <p style="font-size: 1.15rem; color: #fff; line-height: 1.6; margin-bottom: 2rem;">
+                        <span class="lang-en">Are you an expert looking to mentor, or a young person ready to pursue excellence? Let's discuss how Arete can support your journey.</span>
+                        <span class="lang-de">Sind Sie eine Fachkraft, die als Mentor unterstützen möchte, oder ein junger Mensch, der nach Exzellenz strebt? Lassen Sie uns besprechen, wie Arete Ihren Weg begleiten kann.</span>
+                    </p>
+                    
+                    <div style="border-left: 2px solid var(--accent-color); padding-left: 1.5rem; margin-bottom: 3rem;">
+                        <p style="font-size: 1.05rem; color: var(--text-color-muted); line-height: 1.6;">
+                            <span class="lang-en">We operate across Switzerland to support motivated talent wherever they are. Help us turn ambition into achievement. We are currently expanding our network of mentors and corporate partners for the upcoming cohort.</span>
+                            <span class="lang-de">Wir sind in der ganzen Schweiz aktiv, um motivierte Talente dort zu unterstützen, wo sie sind. Helfen Sie uns, Ambition in Erfolg zu verwandeln. Wir erweitern derzeit unser Netzwerk an Mentoren und Unternehmenspartnern für die kommende Kohorte.</span>
+                        </p>
+                    </div>
+                    
+                    <a href="mailto:kiflaym@gmail.com?subject=Application to Arete Program" class="flow-cta" style="margin-top: 0;">
+                        <span class="lang-en">Apply to the Program</span><span class="lang-de">Für das Programm bewerben</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Interface Automation Engine -->
+    <script>
+        function setLang(lang) {
+            // Update root attribute
+            document.documentElement.setAttribute('lang', lang);
+            
+            // Persist preference to browser cache
+            localStorage.setItem('arete_preferred_lang', lang);
+            
+            // Re-render interface buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById('btn-' + lang);
+            if (activeBtn) activeBtn.classList.add('active');
+            
+            // Modify Document Meta Title dynamically
+            document.title = (lang === 'de') 
+                ? 'ARETE Schweiz — Potential entfalten & Das Programm' 
+                : 'ARETE Switzerland — Elevating Potential & The Program';
+        }
+
+        // Initialize state on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            const cachedLanguage = localStorage.getItem('arete_preferred_lang');
+            const systemLanguage = navigator.language.startsWith('de') ? 'de' : 'en';
+            
+            // Fallback resolution path
+            const targetLanguage = cachedLanguage || systemLanguage;
+            setLang(targetLanguage);
+        });
+    </script>
+</body>
+</html>
