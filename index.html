@@ -7,9 +7,9 @@
     <meta name="description" content="ARETE Switzerland empowers talented young people from underrepresented backgrounds through long-term mentorship, skill-building, and access to professional networks.">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="12" fill="%23f5f3ef"/><text x="50" y="68" font-family="Space Grotesk,sans-serif" font-size="55" font-weight="700" fill="%230c0c0c" text-anchor="middle">A</text></svg>">
-    <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="12" fill="%23f5f3ef"/><text x="50" y="68" font-family="Space Grotesk,sans-serif" font-size="55" font-weight="700" fill="%230c0c0c" text-anchor="middle">A</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="12" fill="%23f5f3ef"/><text x="50" y="68" font-family="Space Grotesk,sans-serif" font-size="55" font-weight="700" fill="%230c0c0c" text-anchor="middle">A</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzBjMGMwYyIvPjx0ZXh0IHg9IjE2IiB5PSIyNCIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzg5NTZjIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BPC90ZXh0Pjwvc3ZnPg==">
+    <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzBjMGMwYyIvPjx0ZXh0IHg9IjE2IiB5PSIyNCIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzg5NTZjIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BPC90ZXh0Pjwvc3ZnPg==">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzBjMGMwYyIvPjx0ZXh0IHg9IjE2IiB5PSIyNCIgZm9udC1mYW1pbHk9IkFyaWFsLHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjYzg5NTZjIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5BPC90ZXh0Pjwvc3ZnPg==">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -109,7 +109,7 @@
         .section-inner { max-width:1600px; margin:0 auto; padding:0 var(--container-padding); }
 
         /* TYPOGRAPHY - Space Grotesk for display, Inter for body */
-        .display-xl { font-family:var(--font-display); font-weight:700; font-size:clamp(5rem, 18vw, 16rem); line-height:0.9; letter-spacing:-0.04em; color:var(--text-primary); text-transform:uppercase; }
+        .display-xl { font-family:var(--font-display); font-weight:700; font-size:clamp(3.2rem, 15vw, 16rem); line-height:0.95; letter-spacing:-0.04em; color:var(--text-primary); text-transform:uppercase; }
         .display-lg { font-family:var(--font-display); font-weight:700; font-size:clamp(2.5rem, 7vw, 5.5rem); line-height:0.95; letter-spacing:-0.02em; color:var(--text-primary); text-transform:uppercase; }
         .display-md { font-family:var(--font-display); font-weight:700; font-size:clamp(2rem, 4vw, 3.5rem); line-height:1.1; letter-spacing:-0.01em; color:var(--text-primary); text-transform:uppercase; }
         .heading-sm { font-family:var(--font-mono); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text-muted); font-weight:500; }
@@ -293,7 +293,9 @@
 
         @media (max-width:768px) {
             :root { --container-padding:1.5rem; }
-            .hero { padding-bottom:15vh; }
+            .hero { padding-bottom:12vh; padding-top:15vh; }
+            .hero-title { margin-bottom:2rem; }
+            .hero-subtitle { font-size:clamp(1.1rem, 4vw, 1.5rem); max-width:100%; }
             .hero-scroll-hint { display:none; }
         }
     </style>
